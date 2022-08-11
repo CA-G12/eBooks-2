@@ -13,7 +13,7 @@
   }
   
   body{
-    background-color: #FCF8E8;
+    background-color: white;
   }
 
   .search{
@@ -24,6 +24,7 @@
     position: relative;
     margin: 0 auto;
     padding-top: 1rem ;
+
   }
 
 
@@ -56,11 +57,65 @@
 
 }
 
-
-
-
-
   path{
     fill: var(--Crayola);
     fill-opacity: 1; 
+    
+  }
+
+
+
+
+
+  .books{
+    display: flex;
+    padding: 0.5rem 4rem;
+    flex-wrap: wrap;
+
+  }
+
+  .one-book{
+    display: flex;
+    flex-direction:row;
+    align-items: flex-start;
+
+    padding: 1rem 1rem 1rem 1rem;
+    margin: 1rem;
+    background-color:var(--Cosmic-Latte);
+    border: 1px solid var(--Crayola);
+    border-radius: 10px;
+
+
+  }
+
+  .details{
+    padding: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+
+
+  }
+
+  .details h4, .details p, .details button{
+    padding: 0.2rem;
+  }
+
+  .name p{
+    color:rgba(0, 0, 0, 0.589);
+  }
+
+  .details .img{
+ 
+
+  }
+
+  .details button{
+    padding: 0.5rem 1rem;
+    color: black;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: var(--Crayola);
   }
