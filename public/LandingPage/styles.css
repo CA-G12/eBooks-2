@@ -1,0 +1,114 @@
+/* Start preset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  font-family: "Imprima", sans-serif;
+}
+html,
+body {
+  height: 100%;
+  background-color: var(--main);
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+#root,
+#__next {
+  isolation: isolate;
+}
+/* End preset */
+
+:root {
+  --main-color: #94b49f;
+  --secondary-color: #fcf8e8;
+  --third-color: #cee5d0;
+  --forth-color: #e98d78;
+}
+
+/* font-family: 'Barlow', sans-serif; */
+/* font-family: 'Shadows Into Light', cursive; */
+
+/* Starting the styles for the mobile screens. */
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--secondary-color);
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  color: var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
+}
+.first-col {
+  padding-right: 100px;
+  width: 100%;
+}
+.first-col h1 {
+  font-size: 34px;
+  padding-bottom: 30px;
+  font-family: cursive;
+}
+.first-col p {
+  font-size: 24px;
+  padding-bottom: 30px;
+  text-align: justify;
+  font-family: "Barlow", sans-serif;
+}
+.first-col a {
+  color: var(--secondary-color);
+  font-size: 22px;
+  text-decoration: none;
+  font-weight: bolder;
+}
+.first-col button {
+  background-color: var(--forth-color);
+  border: none;
+  padding: 20px;
+  width: 50%;
+  border-radius: 12px;
+}
+.first-col button:hover {
+  background-color: #ecb390;
+}
+
+.image {
+  width: 1800px;
+  transition-property: width;
+  transition-duration: 2s;
+  transition-timing-function: linear;
+  transition-delay: 1s;
+}
+
