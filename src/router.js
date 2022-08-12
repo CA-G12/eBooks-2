@@ -18,8 +18,6 @@ const router = (req, res) => {
   } else if (endpoint === '/books') {
     console.log('in books handler');
     booksHandler(endpoint, res);
-
-    //   booksHandler
   } else if (endpoint === '/search') {
     //   SearchHandler
   } else {
