@@ -54,7 +54,7 @@ h6 {
 }
 
 /* font-family: 'Barlow', sans-serif; */
-/* font-family: 'Shadows Into Light', cursive; */
+/* font-family: cursive; */
 
 /* Starting the styles for the mobile screens. */
 
@@ -91,6 +91,7 @@ body {
   color: var(--secondary-color);
   font-size: 22px;
   text-decoration: none;
+  font-family: cursive;
   font-weight: bolder;
 }
 .first-col button {
