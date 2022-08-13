@@ -33,6 +33,9 @@ const createBookCard = (thumbnail, title, authers, textSnippet, previewLink) => 
 const fetchBookData = (data) => {
   const results = { data };
   const booksData = results.data.items;
+  searchBox.value = '';
+  matchList.textContent = '';
+  booksContainer.textContent = '';
   booksData.forEach((book) => {
     const thumbnail = book.volumeInfo.imageLinks.smallThumbnail || undefined;
     const { title } = book.volumeInfo;
