@@ -10,6 +10,13 @@ const createElemnt = (element, className, parent, text) => {
   return newElement;
 };
 
+// Cleaning chlidren of a section and get it empty
+const clearingSection = (section) => {
+  while (section.firstElementChild) {
+    section.firstChild.remove();
+  }
+};
+
 const createBookCard = (thumbnail, title, authers, textSnippet, previewLink) => {
   const oneBook = createElemnt('div', 'one-book', booksContainer, '');
   const imgDiv = createElemnt('div', 'img', oneBook, '');
@@ -24,7 +31,6 @@ const createBookCard = (thumbnail, title, authers, textSnippet, previewLink) => 
   const bookDescription = createElemnt('p', '', detailsDiv, textSnippet);
   // eslint-disable-next-line no-unused-vars
   const seeMoreBtn = createElemnt('button', '', detailsDiv, 'See more');
-
   seeMoreBtn.addEventListener('click', () => {
     window.open(previewLink);
   });
@@ -34,8 +40,10 @@ const fetchBookData = (data) => {
   const results = { data };
   const booksData = results.data.items;
   searchBox.value = '';
-  matchList.textContent = '';
-  booksContainer.textContent = '';
+  clearingSection(matchList);
+  clearingSection(booksContainer);
+  clearingSection(searchBox);
+
   booksData.forEach((book) => {
     const isThumbnail = Object.hasOwn(book.volumeInfo, 'imageLinks');
     const thumbnail = (isThumbnail) ? book.volumeInfo.imageLinks.smallThumbnail : 'https://books.google.ps/googlebooks/images/no_cover_thumb.gif';
@@ -47,13 +55,6 @@ const fetchBookData = (data) => {
     const textSnippet = book.searchInfo;
     createBookCard(thumbnail, title, authers, textSnippet, previewLink);
   });
-};
-
-// Cleaning chlidren of a section and get it empty
-const clearingSection = (section) => {
-  while (section.firstElementChild) {
-    section.firstChild.remove();
-  }
 };
 
 const getbook = (name) => {
