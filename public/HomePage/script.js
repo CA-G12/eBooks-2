@@ -2,6 +2,14 @@ const searchBox = document.querySelector('#search');
 const matchList = document.querySelector('#match-values');
 const booksContainer = document.querySelector('.books');
 
+const createElemnt = (element, className, parent, text) => {
+  const newElement = document.createElement(element);
+  newElement.className = className;
+  newElement.textContent = text;
+  parent.appendChild(newElement);
+  return newElement;
+};
+
 // Cleaning chlidren of a section and get it empty
 const clearingSection = (section) => {
   while (section.firstElementChild) {
@@ -13,10 +21,7 @@ const handlingDOMvaluesMenu = (matchedValues, listSection) => {
   clearingSection(listSection);
   // displaying values in html
   matchedValues.slice(0, 10).forEach((element) => {
-    const valueDiv = document.createElement('div');
-    valueDiv.className = 'value';
-    valueDiv.textContent = element;
-    listSection.appendChild(valueDiv);
+    const valueDiv = createElemnt('div', 'value', listSection, element);
     valueDiv.addEventListener('click', () => console.log(`i clicked on ${element}`));
   });
 };
@@ -34,13 +39,6 @@ const getMatchedValues = (arrayOfBooks) => {
 };
 searchBox.addEventListener('input', () => fetch('/books', getMatchedValues));
 
-const createElemnt = (element, className, parent, text) => {
-  const newElement = document.createElement(element);
-  newElement.className = className;
-  newElement.textContent = text;
-  parent.appendChild(newElement);
-  return newElement;
-};
 /* imgSrc */
 const createBookCard = () => {
   const oneBook = createElemnt('div', 'one-book', booksContainer, '');
