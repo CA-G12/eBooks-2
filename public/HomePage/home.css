@@ -39,6 +39,7 @@ body {
   height: 3rem;
   font-size: larger;
   font-family: cursive;
+  border: 1px var(----Cosmic-Latte) solid;
 }
 
 .search input::placeholder {
@@ -75,6 +76,7 @@ body {
   border-right: 2px solid;
   border-left: 2px solid;
   font-family: cursive;
+  border: 1px solid var(--Cosmic-Latte);
 }
 .value:hover {
   background-color: var(--Cosmic-Latte);
