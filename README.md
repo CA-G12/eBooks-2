@@ -4,7 +4,7 @@ Enable the user to search for a book with it's title, and will bring
 to him all books; their titles include the text the user typed.
 
 ## live page
-- Click [here](https://pages.github.com/) to get into the live page.
+- Click [here](https://e-book2.herokuapp.com/) to get into the live page.
 
 ## User Journey
 When the user first enters the app, he gets the landing page which has
