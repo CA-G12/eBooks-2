@@ -37,15 +37,14 @@ const fetchBookData = (data) => {
   matchList.textContent = '';
   booksContainer.textContent = '';
   booksData.forEach((book) => {
-    const thumbnail = book.volumeInfo.imageLinks.smallThumbnail || undefined;
+    const isThumbnail = Object.hasOwn(book.volumeInfo, 'imageLinks');
+    const thumbnail = (isThumbnail) ? book.volumeInfo.imageLinks.smallThumbnail : 'https://books.google.ps/googlebooks/images/no_cover_thumb.gif';
     const { title } = book.volumeInfo;
     let authers = book.volumeInfo.authors;
     authers = authers.join(', ');
     // eslint-disable-next-line prefer-destructuring
     const previewLink = book.volumeInfo.previewLink;
-    const { textSnippet } = book.searchInfo;
-
-    console.log(thumbnail, title, authers, textSnippet, previewLink);
+    const textSnippet = book.searchInfo;
     createBookCard(thumbnail, title, authers, textSnippet, previewLink);
   });
 };
@@ -60,6 +59,7 @@ const clearingSection = (section) => {
 const getbook = (name) => {
   const bookName = name.replace(/ /g, '+');
   const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:"${bookName}"&printType=books`;
+  console.log(url);
   fetch(url, fetchBookData);
 };
 
