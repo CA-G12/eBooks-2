@@ -52,7 +52,7 @@ const fetchBookData = (data) => {
     authers = authers.join(', ');
     // eslint-disable-next-line prefer-destructuring
     const previewLink = book.volumeInfo.previewLink;
-    const textSnippet = book.searchInfo;
+    const { textSnippet } = book.searchInfo;
     createBookCard(thumbnail, title, authers, textSnippet, previewLink);
   });
 };
