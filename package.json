@@ -30,6 +30,8 @@
     "supertest": "^6.2.4"
   },
   "dependencies": {
+    "dotenv": "^16.0.1",
+    "heroku": "^7.62.0",
     "mime-types": "^2.1.35"
   }
 }
