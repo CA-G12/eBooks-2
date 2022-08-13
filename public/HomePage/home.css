@@ -89,13 +89,14 @@ path {
   display: flex;
   padding: 0.5rem 4rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .one-book {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-
+  width: 80%;
   padding: 1rem 1rem 1rem 1rem;
   margin: 1rem;
   background-color: var(--Cosmic-Latte);
@@ -104,6 +105,7 @@ path {
 }
 
 .details {
+  width: 100%;
   padding: 0.6rem;
   display: flex;
   flex-direction: column;
@@ -113,7 +115,11 @@ path {
 .details h4,
 .details p,
 .details button {
-  padding: 0.2rem;
+  margin: 0.3rem;
+}
+
+.details button {
+  width: 20%;
 }
 
 .name p {

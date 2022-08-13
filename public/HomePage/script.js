@@ -1,5 +1,6 @@
-const searchBox = document.getElementById('search');
-const matchList = document.getElementById('match-values');
+const searchBox = document.querySelector('#search');
+const matchList = document.querySelector('#match-values');
+const booksContainer = document.querySelector('.books');
 
 // Cleaning chlidren of a section and get it empty
 const clearingSection = (section) => {
@@ -32,3 +33,29 @@ const getMatchedValues = (arrayOfBooks) => {
   }
 };
 searchBox.addEventListener('input', () => fetch('/books', getMatchedValues));
+
+const createElemnt = (element, className, parent, text) => {
+  const newElement = document.createElement(element);
+  newElement.className = className;
+  newElement.textContent = text;
+  parent.appendChild(newElement);
+  return newElement;
+};
+/* imgSrc */
+const createBookCard = () => {
+  const oneBook = createElemnt('div', 'one-book', booksContainer, '');
+  const imgDiv = createElemnt('div', 'img', oneBook, '');
+  const bookImg = createElemnt('img', '', imgDiv, '');
+  bookImg.src = 'http://books.google.com/books/content?id=nO9ZAgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api';
+  const detailsDiv = createElemnt('div', 'details', oneBook, '');
+  // eslint-disable-next-line no-unused-vars
+  const bookName = createElemnt('h3', '', detailsDiv, 'Node.js Book');
+  // eslint-disable-next-line no-unused-vars
+  const bookAutherName = createElemnt('p', '', detailsDiv, 'Colin J. Ihrig');
+  // eslint-disable-next-line no-unused-vars
+  const bookDescription = createElemnt('p', '', detailsDiv, 'Updated for Angular 2, Angular 4, and subsequent versions, this');
+  // eslint-disable-next-line no-unused-vars
+  const seeMoreBtn = createElemnt('button', '', detailsDiv, 'See more');
+};
+
+createBookCard();
