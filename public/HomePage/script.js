@@ -59,7 +59,6 @@ const clearingSection = (section) => {
 const getbook = (name) => {
   const bookName = name.replace(/ /g, '+');
   const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:"${bookName}"&printType=books`;
-  console.log(url);
   fetch(url, fetchBookData);
 };
 
