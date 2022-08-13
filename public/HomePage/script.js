@@ -10,20 +10,24 @@ const createElemnt = (element, className, parent, text) => {
   return newElement;
 };
 
-const createBookCard = () => {
+const createBookCard = (thumbnail, title, authers, textSnippet, previewLink) => {
   const oneBook = createElemnt('div', 'one-book', booksContainer, '');
   const imgDiv = createElemnt('div', 'img', oneBook, '');
   const bookImg = createElemnt('img', '', imgDiv, '');
-  bookImg.src = 'http://books.google.com/books/content?id=nO9ZAgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api';
+  bookImg.src = thumbnail;
   const detailsDiv = createElemnt('div', 'details', oneBook, '');
   // eslint-disable-next-line no-unused-vars
-  const bookName = createElemnt('h3', '', detailsDiv, 'Node.js Book');
+  const bookName = createElemnt('h3', '', detailsDiv, title);
   // eslint-disable-next-line no-unused-vars
-  const bookAutherName = createElemnt('p', '', detailsDiv, 'Colin J. Ihrig');
+  const bookAutherName = createElemnt('p', '', detailsDiv, authers);
   // eslint-disable-next-line no-unused-vars
-  const bookDescription = createElemnt('p', '', detailsDiv, 'Updated for Angular 2, Angular 4, and subsequent versions, this');
+  const bookDescription = createElemnt('p', '', detailsDiv, textSnippet);
   // eslint-disable-next-line no-unused-vars
   const seeMoreBtn = createElemnt('button', '', detailsDiv, 'See more');
+
+  seeMoreBtn.addEventListener('click', () => {
+    window.open(previewLink);
+  });
 };
 
 const fetchBookData = (data) => {
@@ -34,10 +38,12 @@ const fetchBookData = (data) => {
     const { title } = book.volumeInfo;
     let authers = book.volumeInfo.authors;
     authers = authers.join(', ');
-    const { previewLink } = book.volumeInfo.previewLink;
+    // eslint-disable-next-line prefer-destructuring
+    const previewLink = book.volumeInfo.previewLink;
     const { textSnippet } = book.searchInfo;
 
     console.log(thumbnail, title, authers, textSnippet, previewLink);
+    createBookCard(thumbnail, title, authers, textSnippet, previewLink);
   });
 };
 
