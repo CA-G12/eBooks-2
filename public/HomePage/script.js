@@ -10,13 +10,7 @@ const createElemnt = (element, className, parent, text) => {
   return newElement;
 };
 
-const createBookCard = (data) => {
-  const f = { data };
-  console.log(f.data.items[0].volumeInfo.imageLinks.smallThumbnail);
-  console.log(f.data.items[0].volumeInfo.title);
-  console.log(f.data.items[0].volumeInfo.previewLink);
-  console.log({ ...f.data.items[0].volumeInfo.authors });
-  console.log(f.data.items[0].searchInfo.textSnippet);
+const createBookCard = () => {
   const oneBook = createElemnt('div', 'one-book', booksContainer, '');
   const imgDiv = createElemnt('div', 'img', oneBook, '');
   const bookImg = createElemnt('img', '', imgDiv, '');
@@ -32,6 +26,21 @@ const createBookCard = (data) => {
   const seeMoreBtn = createElemnt('button', '', detailsDiv, 'See more');
 };
 
+const fetchBookData = (data) => {
+  const results = { data };
+  const booksData = results.data.items;
+  booksData.forEach((book) => {
+    const thumbnail = book.volumeInfo.imageLinks.smallThumbnail || undefined;
+    const { title } = book.volumeInfo;
+    let authers = book.volumeInfo.authors;
+    authers = authers.join(', ');
+    const { previewLink } = book.volumeInfo.previewLink;
+    const { textSnippet } = book.searchInfo;
+
+    console.log(thumbnail, title, authers, textSnippet, previewLink);
+  });
+};
+
 // Cleaning chlidren of a section and get it empty
 const clearingSection = (section) => {
   while (section.firstElementChild) {
@@ -42,8 +51,7 @@ const clearingSection = (section) => {
 const getbook = (name) => {
   const bookName = name.replace(/ /g, '+');
   const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:"${bookName}"&printType=books`;
-  console.log(url);
-  fetch(url, createBookCard);
+  fetch(url, fetchBookData);
 };
 
 const handlingDOMvaluesMenu = (matchedValues, listSection) => {
@@ -68,9 +76,3 @@ const getMatchedValues = (arrayOfBooks) => {
   }
 };
 searchBox.addEventListener('input', () => fetch('/books', getMatchedValues));
-
-/* imgSrc */
-
-/*
-createBookCard();
-*/
