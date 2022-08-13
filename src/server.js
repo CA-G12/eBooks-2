@@ -1,9 +1,11 @@
 const http = require('http');
+
+const hostname = process.env.HOSTNAME || 'localhost';
+const port = process.env.PORT || 4000;
 const router = require('./router');
 
-const port = 3333;
 const server = http.createServer(router);
-server.listen(port, () => {
+server.listen(port, hostname, () => {
   console.log(
     `Server is listening on port ${port}.  Ready to accept requests!`,
   );
