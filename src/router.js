@@ -1,7 +1,6 @@
-const homeHandler = require('./handlers/homeHandler');
-const landingHTMLHandler = require('./handlers/landingHTMLHandler');
-const landingHandler = require('./handlers/landingHandler');
-const booksHandler = require('./handlers/booksHandler');
+const {
+  homeHandler, landingHTMLHandler, landingHandler, booksHandler, notFoundHandler,
+} = require('./handlers');
 
 const router = (req, res) => {
   const endpoint = req.url;
@@ -18,10 +17,8 @@ const router = (req, res) => {
   } else if (endpoint === '/books') {
     console.log('in books handler');
     booksHandler(endpoint, res);
-  } else if (endpoint === '/search') {
-    //   SearchHandler
   } else {
-    //   notFoundHandler
+    notFoundHandler(res);
   }
 };
 module.exports = router;
